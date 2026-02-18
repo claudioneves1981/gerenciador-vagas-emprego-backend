@@ -1,8 +1,12 @@
 package com.vagasemprego.demo.dtos;
 
+import com.vagasemprego.demo.models.Usuario;
+
 public record UserRequestDTO(
+
         String username,
-        String password
+        String password,
+        Usuario.Role role
 
 ) {
 }

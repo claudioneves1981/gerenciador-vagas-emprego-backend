@@ -34,14 +34,17 @@ public class Vagas {
     private String origem;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="INTERESSE")
     private Interesse interesse;
 
     private Double salario;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="CONTRATO")
     private Contrato contrato;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="TIPO")
     private Tipo tipo;
 
     private String beneficios;

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.vagasemprego.demo.utils.ValidationUtil.validateIdOrThrowException;
@@ -126,10 +127,10 @@ public class UsuarioService {
     }
 
     @Transactional(readOnly = true)
-    public UserResponseDTO findByUsuario(String usuario) {
-        return usuarioRepository.findByUsuario(usuario)
+    public Optional<UserResponseDTO> findByUsuario(String usuario) {
+        return Optional.of(usuarioRepository.findByUsuario(usuario)
                 .map(UserMapper::toDto)
-                .orElseThrow(() -> new EntityUserNotFoundException(usuario));
+                .orElseThrow(() -> new EntityUserNotFoundException(usuario)));
     }
 
     @Transactional(readOnly = true)
@@ -170,6 +171,11 @@ public class UsuarioService {
         Usuario user = usuarioRepository.findById(id)
                 .orElseThrow(() -> new EntityUserNotFoundException(id));
         usuarioRepository.delete(user);
+    }
+
+    @Transactional
+    public Long count(){
+        return usuarioRepository.count();
     }
 
 

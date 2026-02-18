@@ -17,7 +17,16 @@ public class UserMapper {
     public static Usuario toEntity(UserRequestDTO userDTO) {
         return new Usuario(
                 userDTO.username(),
-                userDTO.password()
+                userDTO.password(),
+                userDTO.role()
+        );
+    }
+
+    public static UserRequestDTO toRequestDto(Usuario user) {
+        return new UserRequestDTO(
+                user.getUsername(),
+                user.getPassword(),
+                user.getRole()
         );
     }
 }

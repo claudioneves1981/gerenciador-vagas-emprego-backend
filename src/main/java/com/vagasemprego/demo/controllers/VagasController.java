@@ -22,7 +22,7 @@ public class VagasController {
     @GetMapping("/me")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<VagasResponseDTO>> getMyVagas() {
-        List<VagasResponseDTO> vagasResponseDTOList = vagasService.findByUser();
+        List<VagasResponseDTO> vagasResponseDTOList = vagasService.findVagasByUser();
         return ResponseEntity.ok(vagasResponseDTOList);
     }
 

@@ -9,12 +9,12 @@ public record VagasRequestDTO(
 
         String empresa,
         String vaga,
-        Situacao situacao,
+        String situacao,
         String origem,
-        Interesse interesse,
+        String interesse,
         Double salario,
-        Contrato contrato,
-        Tipo tipo,
+        String contrato,
+        String tipo,
         String beneficios,
         String observacoes
 

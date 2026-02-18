@@ -44,7 +44,7 @@ public class VagasService {
     }*/
 
     @Transactional(readOnly = true)
-    public List<VagasResponseDTO> findByUser() {
+    public List<VagasResponseDTO> findVagasByUser() {
         Usuario currentUser = jwtTokenProvider.getCurrentUser();
         return vagasRepository.findByUsuario(currentUser)
                 .stream()
@@ -96,14 +96,14 @@ public class VagasService {
         Vagas vagasToSave = new Vagas();
         vagasToSave.setUsuario(currentUser);
         vagasToSave.setVaga(vagasDTO.vaga());
-        vagasToSave.setContrato(vagasDTO.contrato());
+        vagasToSave.setContrato(Contrato.valueOf(vagasDTO.contrato()));
         vagasToSave.setBeneficios(vagasDTO.beneficios());
         vagasToSave.setEmpresa(vagasDTO.empresa());
         vagasToSave.setInscricao(LocalDateTime.now());
-        vagasToSave.setInteresse(vagasDTO.interesse());
-        vagasToSave.setTipo(vagasDTO.tipo());
+        vagasToSave.setInteresse(Interesse.valueOf(vagasDTO.interesse()));
+        vagasToSave.setTipo(Tipo.valueOf(vagasDTO.tipo()));
         vagasToSave.setSalario(vagasDTO.salario());
-        vagasToSave.setSituacao(vagasDTO.situacao());
+        vagasToSave.setSituacao(Situacao.valueOf(vagasDTO.situacao()));
         vagasToSave.setOrigem(vagasDTO.origem());
         vagasToSave.setObservacoes(vagasDTO.observacoes());
 
@@ -124,13 +124,14 @@ public class VagasService {
 
         if (vagasDTO != null){
             vagasToSave.setVaga(vagasDTO.vaga());
-            vagasToSave.setContrato(vagasDTO.contrato());
+            vagasToSave.setContrato(Contrato.valueOf(vagasDTO.contrato()));
             vagasToSave.setBeneficios(vagasDTO.beneficios());
             vagasToSave.setEmpresa(vagasDTO.empresa());
-            vagasToSave.setInteresse(vagasDTO.interesse());
-            vagasToSave.setTipo(vagasDTO.tipo());
+            vagasToSave.setInscricao(LocalDateTime.now());
+            vagasToSave.setInteresse(Interesse.valueOf(vagasDTO.interesse()));
+            vagasToSave.setTipo(Tipo.valueOf(vagasDTO.tipo()));
             vagasToSave.setSalario(vagasDTO.salario());
-            vagasToSave.setSituacao(vagasDTO.situacao());
+            vagasToSave.setSituacao(Situacao.valueOf(vagasDTO.situacao()));
             vagasToSave.setOrigem(vagasDTO.origem());
             vagasToSave.setObservacoes(vagasDTO.observacoes());
         }

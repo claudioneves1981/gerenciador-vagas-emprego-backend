@@ -6,6 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public record SessaoDTO(String refreshToken, String token) {
+public record SessaoDTO(String refreshToken, String token, String nome) {
 
 }
